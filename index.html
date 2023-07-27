@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css"
+    integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"
+    integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UI Task</title>
+
+</head>
+
+<body>
+
+  <div class="container">
+
+    <div class="filterBar">
+      <div class="image">
+        <img class="icon" src="/image/zoho.webp">
+      </div>
+
+      <div class="SearchBar" id="Global">
+
+        <input placeholder="Search" type="text" id="searchText" onkeyup="filterTable(this)">
+        <select name="Filter By" id="filterBy" onchange="filterTable(this)" style="display: none;">
+        </select>
+      </div>
+    </div>
+
+
+    <div class="TableContent">
+      <table class="employee" id="employee">
+        <thead>
+          <tr>
+            <th id="Name">
+              <div class="flex">
+                <span class="tablehead">Name</span>
+                <div>
+                  <i filter-type=${filterColumnId} id="icon_experience" class="fa-solid fa-filter btn"
+                  style="color: #d6d6d6;" onClick="popUp(`NameFilter`)"></i>
+                  <i ascending ="true" class=" fa-solid fa-arrow-up " onclick="onsortClick(this,'Name')" id="arrowName" style="color: #d6d6d6;"></i>
+                </div>
+                
+              </div>
+              <div class="" id="NameFilter" style="display: none;">
+                <select id="nameSortOption">
+                  <option value="contains">Contains</option>
+                  <option value="beginsWith">Begins With</option>
+
+
+
+                </select>
+                <input type="search" id="nameString"  onkeyup="filterTable(this)"
+                  class="filterSearch" Placeholder="search" />
+              </div>
+            </th>
+            <th id="Email">
+              <div class="flex" id="">
+                <span class="tablehead">Email</span>
+                <div>
+                <i filter-type=${filterColumnId} id="icon_experience" class="fa-solid fa-filter btn"
+                  style="color: #d6d6d6;" onClick="popUp(`EmailFilter`)"></i>
+                  <i ascending ="true" class=" fa-solid fa-arrow-up " onclick="onsortClick(this,'Email')" id="arrowEmail" style="color: #d6d6d6;"></i>
+                </div></div>
+              <div class="" id="EmailFilter" style="display: none;">
+                <select id="emailSortOption">
+                  <option value="contains">Contains</option>
+                  <option value="beginsWith">Begins With</option>
+
+
+
+                </select>
+                <input type="search" id="emailString" onkeyup="filterTable(this)" class="filterSearch"
+                  Placeholder="search" />
+              </div>
+            </th>
+            <th id="Role">
+              <div class="flex">
+                <span class="tablehead">Role</span>
+                <div>
+                <i filter-type=filterpop id="icon" class="fa-solid fa-filter btn" style="color: #d6d6d6;"
+                  onClick="popUp(`RoleFilter`)"></i>
+                  <i ascending ="true" class=" fa-solid fa-arrow-up " onclick="onsortClick(this,'Role')" id="arrowRole" style="color: #d6d6d6;"></i>
+              </div></div>
+              <div class="filterpopup forString" id="RoleFilter" style="display: none;">
+                <select id="roleSortOption">
+                  <option value="contains">Contains</option>
+                  <option value="beginsWith">Begins With</option>
+
+
+
+                </select>
+                <input type="search" id="roleString" onkeyup="filterTable(this)" class="filterSearch"
+                  Placeholder="search" />
+              </div>
+
+            </th>
+            <th>
+              <div  id="Experience">
+                <div class="flex">
+                <span class="tablehead">Experience</span>
+                <div>
+                <i filter-type=${filterColumnId} id="icon_experience" class="fa-solid fa-filter btn"
+                  style="color: #d6d6d6;" onClick="popUp(`NumericFilter`)"></i>
+                  <i  ascending ="true" class=" fa-solid fa-arrow-up " onclick="onsortClick(this,'Experience')" id="arrowExp" style="color: #d6d6d6;"></i>
+              </div></div></div>
+              <div class="filterpopup" id="NumericFilter" style="display: none;">
+                <select class="number" id="numericTag" onchange="showExtraFieldForRange(this)">
+                  <option value="lessThan">Less than</option>
+                  <option value="greaterThan">Greater than</option>
+                  <option value="equals">Equal</option>
+                  <option value="range">In range</option>
+                </select>
+                <input type="number" min="0" onkeyup="filterTable(this)" class="filterSearch number" id="inRange1"
+                  Placeholder="search" />
+                <input type="number" min="0" onkeyup="filterTable(this)" class="filterSearch number" Placeholder="To"
+                  id="inRange2" style="display: none;">
+              </div>
+            </th>
+          </tr>
+        </thead>
+
+      </table>
+      <CENTER><img src="/image/empty.png" width="200px" style="display: none;margin-top: 80px;" id="noData"></img></CENTER>
+    </div>
+
+  </div>
+</body>
+
+</html>
