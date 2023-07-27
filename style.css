@@ -1,0 +1,381 @@
+/* Adding POPPINS FROM GOOGLE FONT API */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    display: flex;
+    align-items: center;
+    justify-content:center ;
+    background-color: #efefef;
+    font-family: 'Poppins', sans-serif;
+    
+}
+
+.container
+{ position: relative;
+   width: 70%;
+   margin-top: 20px;
+   min-height: 600px;
+   background-color: #ffffff;
+   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+   border-radius: 5px;
+ 
+   
+}
+
+.filterBar 
+{  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin: 20px 20px 0;
+
+}
+.image
+{
+    width: 100px;
+    height: auto;
+}
+.icon
+{
+    width: 100%;
+    height: auto;
+    
+}
+.filterBar input {
+    width: 60%;
+    height: 40px;
+    padding: 0 5px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+}
+
+input[type="text"]
+{
+    font-family: 'Poppins', sans-serif;
+}
+
+.header
+{   padding: 0px 10px;
+    font-weight:lighter;
+    display: flex;
+    justify-content: space-between;
+}
+
+#arrow
+{ 
+    width: 10px;
+   
+}
+#arrowEmail
+{
+
+}
+.header h3{
+    font-size:medium;
+   color: #ff6b6b;;
+}
+
+.employee
+{  width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    font-family: 'Poppins';
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  
+}
+
+table tr{
+    margin: 20px;
+}
+table th {
+
+    font-weight: 300;
+}
+table, td, th {
+    border: 1px solid rgb(235, 235, 235);
+  }
+th , td{
+    padding: 15px;
+    text-align: left;
+      
+}
+
+.TableContent
+{
+   overflow-x: auto;
+    
+    padding:0 30px;
+} 
+
+
+tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+
+thead tr {
+    background-color: #009879;
+    color: #ffffff;
+}
+
+tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+#searchText {
+    padding-left: 40px;
+    background: #eee url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E") no-repeat 13px center;
+}
+
+
+
+select {
+    outline: none;
+    height: 30px;
+    border-collapse: collapse;
+    margin: 0;
+    font-family: 'Poppins';
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    background-color: #ffffff;
+    padding: 4px;
+    width: 100%;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+i{
+    
+    align-items: end;
+}
+.fa-filter:hover::before {
+    color: #fff;
+}
+.filter 
+{
+padding: 5px;
+}
+.tablehead {
+    color: #f2f2f2;
+    font-weight: 500;
+}
+
+
+.flex
+{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.btn 
+{
+    cursor: pointer;
+}
+.btn:hover{
+  
+}
+#Experience{
+    position: relative;
+}
+
+.filterpopup {
+  position: absolute;
+  background: #eeeef0;
+  border: 1px solid #e8e8e8;
+  border-radius: 5px;
+  right: 0;
+  padding: 10px;
+}
+.forString
+{
+  padding: 10px;
+}
+
+
+#Name
+{
+    background-color: #009879;
+}
+
+
+
+#Role ,#Email ,#Name
+{
+    position: relative;
+}
+#RoleFilter, #EmailFilter, #NumericFilter {
+    position: absolute;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 6px;
+    right: 0px;
+    padding: 10px;
+    width: 170px;
+    margin-bottom: 10px;
+    box-shadow: 0 7px 15px rgba(0,0,0,0.22);
+}
+#NameFilter {
+    position: absolute;
+        background: #fff;
+        border: 1px solid #e8e8e8;
+        border-radius: 4px;
+        left: 100px;
+        top: 35px;
+        padding: 10px;
+        width: 170px;
+        height: auto;
+        margin-bottom: 10px;
+        box-shadow: 0 7px 15px rgba(0,0,0,0.22);
+    }
+ /* #NumericFilter select{
+   width: 60%;
+ } */
+ #NumericFilter input[type="number"] {
+    width: 100%;
+}
+
+
+#RoleFilter > * , #EmailFilter>*, #NameFilter>*,#NumericFilter>*{
+margin: 5px  0;
+}
+.SearchBar
+{
+    width: 60%;
+   
+    
+} .SearchBar input
+{
+  
+    float: right;
+    margin-right: 0;
+    
+   
+} 
+.filterSearch {
+    width: 100%;
+    height: 30px;
+    padding: 5px 7px;
+    outline: none;
+    border-radius: 4px;
+    border: 1px solid #e8e8e8;
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+   
+        box-sizing: border-box;
+   
+
+    
+}
+
+#arrowName , #arrowEmail ,#arrowRole,#arrowExp
+{  margin-left: 5px;
+    visibility: hidden; 
+    cursor: pointer;
+}
+#Name:hover   #arrowName ,#Email:hover #arrowEmail ,#Experience :hover #arrowExp,#Role:hover #arrowRole
+{
+    visibility: visible;
+}
+
+#Name::after:hover #arrowName ,#Email::after:hover #arrowEmail ,#Experience::after:hover #arrowExp,#Role::after:hover #arrowRole
+{
+    visibility: hidden; 
+}
+.filterpop {
+    position: absolute;
+    background: #eeeef0;
+    border: 1px solid #e8e8e8;
+    border-radius: 5px;
+    right: 0;
+    padding: 10px;
+  }
+
+
+
+@media screen and (max-width:700px) {
+    .filterBar{
+       margin:auto;
+    }
+
+    input{
+        height: 30px;
+        width: 70px;
+    }
+   
+    .image{
+        display: none;
+    }
+   
+    .employee
+   {
+
+    min-width: 300px;
+    }
+    .container
+    { position: relative;
+       width: 90%;
+    }
+
+table tr{
+    margin: 10px;
+}
+table th {
+     cursor: pointer;
+    font-weight: 300;
+}
+table, td, th {
+    border: 1px solid rgb(235, 235, 235);
+  }
+th , td{
+    padding: 5px;
+    text-align: left;
+      
+}
+.SearchBar input
+{
+    width: 90%;
+    display: block;
+    
+   
+}
+
+
+.filterBar input
+ {  
+   
+    width: 50%;
+   padding:0 2px ;
+    
+    height: 30px;
+ } 
+ #arrowName , #arrowEmail ,#arrowRole,#arrowExp
+{  margin-left: 5px;
+    width: 5px;
+    visibility: visible; 
+    cursor: pointer;
+}
+.tablehead {
+    color: #f2f2f2;
+    font-weight: 300;
+}
+table th {
+    padding: 5px;
+    font-weight: 200;
+    font-size: 0.6rem;
+}
+table td
+{
+    font-size: 0.6rem;
+}
+
+}
