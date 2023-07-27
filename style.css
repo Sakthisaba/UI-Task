@@ -291,6 +291,10 @@ margin: 5px  0;
 {
     visibility: hidden; 
 }
+
+#arrowName[icon-selected="true"], #arrowEmail[icon-selected="true"] ,#arrowRole[icon-selected="true"], #arrowExp[icon-selected="true"] {
+    visibility: visible;
+}
 .filterpop {
     position: absolute;
     background: #eeeef0;

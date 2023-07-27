@@ -351,6 +351,12 @@ function onsortClick(iconTag,column)
         iconTag.style.transform="rotate(0deg)"
         iconTag.setAttribute("ascending","true")
      }
+
+     let previousSelectedSortIcon = document.querySelector("[icon-selected=true")
+     if (previousSelectedSortIcon) {
+        previousSelectedSortIcon.setAttribute("icon-selected","false")
+     }
+     iconTag.setAttribute("icon-selected","true")
 }
 
 //sortFunction
