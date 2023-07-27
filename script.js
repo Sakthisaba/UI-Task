@@ -40,6 +40,42 @@ let dataArray =  [
         "Email":"sam@outlook.com",
         "Role" :"ContentWriter",
         "Experience":"0.5"
+    },
+    {
+        "Name":"Vinayak",
+        "Email":"vinayakam4567@zoho.com",
+        "Role" :"Designer",
+        "Experience":"4"
+    },
+    {
+        "Name":"Sivashankar",
+        "Email":"shankar1995@rediffmail.com",
+        "Role" :"IOS Developer",
+        "Experience":"14"
+    },
+    {
+        "Name":"Suryakumar",
+        "Email":"surya12kumar@gmail.com",
+        "Role" :"FrontEnd Engineer",
+        "Experience":"1"
+    },
+    {
+        "Name":"Lathish kumar",
+        "Email":"itsmelathish@gmail.com",
+        "Role" :"Software Engineer",
+        "Experience":"18"
+    },
+    {
+        "Name":"Muthuvel",
+        "Email":"velu85@zoho.com",
+        "Role" :"Backend Engineer",
+        "Experience":"0"
+    },
+    {
+        "Name":"Shivani",
+        "Email":"shivaani97@yahoo.com",
+        "Role" :"Designer",
+        "Experience":"7"
     }
     
 
@@ -147,7 +183,7 @@ function filterTable(FilterColumn) {
                 }
             }
         })
-
+        drawTable(newDataArray);
     } else if (Column == "NameFilter")
 
     {
@@ -207,7 +243,7 @@ function filterTable(FilterColumn) {
 
 
         } 
-        resultData =newDataArray;  drawTable(newDataArray)
+        resultData =newDataArray;  drawTable(newDataArray);
     }
     }
     let tbody = document.getElementsByTagName("tbody")
