@@ -3,6 +3,7 @@
 
 *{
     font-family: 'Poppins', sans-serif;
+    
 }
 body
 {
@@ -11,13 +12,14 @@ body
     justify-content:center ;
     background-color: #efefef;
     font-family: 'Poppins', sans-serif;
-    
+    overflow: hidden;
 }
 
 .container
 { position: relative;
    width: 70%;
-   margin-top: 20px;
+   margin-top: 20px ;
+   margin-bottom: 20px;
    min-height: 600px;
    background-color: #ffffff;
    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
@@ -32,7 +34,7 @@ body
     align-items: center;
     justify-content: space-between;
     padding: 10px;
-    margin: 20px 20px 0;
+    margin: 20px 20px 30px;
 
 }
 .image
@@ -86,7 +88,7 @@ input[type="text"]
 .employee
 {  width: 100%;
     border-collapse: collapse;
-    margin: 25px 0;
+
     font-size: 0.9em;
     font-family: 'Poppins';
     min-width: 400px;
@@ -98,7 +100,7 @@ table tr{
     margin: 20px;
 }
 table th {
-
+    
     font-weight: 300;
 }
 table, td, th {
@@ -112,10 +114,13 @@ th , td{
 
 .TableContent
 {
-   overflow-x: auto;
-    
-    padding:0 30px;
+   overflow: auto;
+   height:450px;
+    padding:0 30px 0 0;
+    margin-left: 30px;
 } 
+
+
 
 
 tr:nth-of-type(even) {
@@ -123,7 +128,7 @@ tr:nth-of-type(even) {
 }
 
 
-thead tr {
+th {
     background-color: #009879;
     color: #ffffff;
 }
@@ -247,7 +252,11 @@ padding: 5px;
  #NumericFilter input[type="number"] {
     width: 100%;
 }
-
+#Role ,#Email ,#Name,#Experience
+{
+    position: sticky;
+    top: 0;
+}
 
 #RoleFilter > * , #EmailFilter>*, #NameFilter>*,#NumericFilter>*{
 margin: 5px  0;
@@ -308,9 +317,21 @@ margin: 5px  0;
     right: 0;
     padding: 10px;
   }
+/* For ScrollBar */
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
+  
+}
 
 
 
+::-webkit-scrollbar-thumb {
+    background: #009879; 
+    border-radius: 10px;
+  
+  }
 @media screen and (max-width:700px) {
     .filterBar{
        margin:auto;

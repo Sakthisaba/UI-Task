@@ -246,8 +246,7 @@ function filterTable(FilterColumn) {
         resultData =newDataArray;  drawTable(newDataArray);
     }
     }
-    let tbody = document.getElementsByTagName("tbody")
-    tbody.innerHTML = ""
+    
  
 
 
@@ -292,8 +291,7 @@ function FilterBasedOnColumn(columnName, searchType, searchValue)
         })
         
     }
-    let tbody = document.getElementsByTagName("tbody")
-    tbody.innerHTML = ""
+   
    
     drawTable(newDataArray)
 }
@@ -310,7 +308,7 @@ function generateTableBody(tableData) {
         tbody.setAttribute("id", "tableBody")
         table.appendChild(tbody);
     }
- 
+    tbody.innerHTML = ""
     let tableContent = "";
     let tableRow;
     tableData.forEach(element => {
