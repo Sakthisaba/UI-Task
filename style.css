@@ -157,6 +157,10 @@ i{
     
     align-items: end;
 }
+.fa-solid:hover::before 
+{
+    color: #fff;
+}
 .fa-filter:hover::before {
     color: #fff;
 }
