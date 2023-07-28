@@ -317,21 +317,24 @@ margin: 5px  0;
     right: 0;
     padding: 10px;
   }
-/* For ScrollBar */
-::-webkit-scrollbar
-{
-    width: 6px;
-    height: 6px;
-  
-}
-
-
-
-::-webkit-scrollbar-thumb {
-    background: #009879; 
-    border-radius: 10px;
-  
-  }
+   /* For ScrollBar */
+   ::-webkit-scrollbar
+   {
+       width: 6px;
+       height: 6px;
+     
+   }
+   
+   
+   
+   ::-webkit-scrollbar-thumb {
+       background: #009879; 
+       border-radius: 10px;
+     
+     }
+  @media screen and (min-width:700px) {
+ 
+  } 
 @media screen and (max-width:700px) {
     .filterBar{
        margin:auto;
@@ -406,6 +409,27 @@ table th {
 table td
 {
     font-size: 0.6rem;
+}
+
+
+.TableContent
+{
+   overflow: auto;
+   height:600px;
+    
+    margin-left: 30px;
+} 
+.SearchBar {
+    display: flex;
+    justify-content: center;
+}
+
+
+.filterBar 
+{
+    justify-content: center;
+    padding: 0px;
+    margin: 20px 20px 30px;
 }
 
 }
