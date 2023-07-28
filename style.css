@@ -204,12 +204,20 @@ padding: 5px;
   border-radius: 5px;
   right: 0;
   padding: 10px;
+  
 }
 .forString
 {
   padding: 10px;
 }
-
+#Role ,#Email ,#Name,#Experience
+{  
+     
+    /* position: sticky;
+    top: 0;
+     */
+     position: relative;
+}
 
 #Name
 {
@@ -218,10 +226,7 @@ padding: 5px;
 
 
 
-#Role ,#Email ,#Name
-{
-    position: relative;
-}
+
 #RoleFilter, #EmailFilter, #NumericFilter {
     position: absolute;
     background: #fff;
@@ -245,6 +250,8 @@ padding: 5px;
         height: auto;
         margin-bottom: 10px;
         box-shadow: 0 7px 15px rgba(0,0,0,0.22);
+        z-index: 100;
+        
     }
  /* #NumericFilter select{
    width: 60%;
@@ -252,14 +259,12 @@ padding: 5px;
  #NumericFilter input[type="number"] {
     width: 100%;
 }
-#Role ,#Email ,#Name,#Experience
-{
-    position: sticky;
-    top: 0;
-}
+
+
 
 #RoleFilter > * , #EmailFilter>*, #NameFilter>*,#NumericFilter>*{
 margin: 5px  0;
+
 }
 .SearchBar
 {
