@@ -285,6 +285,7 @@ margin: 5px  0;
 {  margin-left: 5px;
     visibility: hidden; 
     cursor: pointer;
+    transition:  ease 0.5s;
 }
 #Name:hover   #arrowName ,#Email:hover #arrowEmail ,#Experience :hover #arrowExp,#Role:hover #arrowRole
 {
