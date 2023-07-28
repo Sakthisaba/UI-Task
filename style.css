@@ -213,15 +213,16 @@ padding: 5px;
 #Role ,#Email ,#Name,#Experience
 {  
      
-    /* position: sticky;
+    position: sticky;
     top: 0;
-     */
-     position: relative;
+    
+     /* position: relative; */
 }
 
 #Name
 {
     background-color: #009879;
+    z-index: 10;
 }
 
 
@@ -250,7 +251,7 @@ padding: 5px;
         height: auto;
         margin-bottom: 10px;
         box-shadow: 0 7px 15px rgba(0,0,0,0.22);
-        z-index: 100;
+        z-index: 10;
         
     }
  /* #NumericFilter select{
