@@ -86,6 +86,8 @@ let dataArray = [{
 var resultData = dataArray;
 var searchQuery = " ";
 var column = "Global";
+var activeSortColumn = "Name";
+var activeSortOrder = true; //true for ascending false for descending
 // annoynmous function to call DraWTable Function by itself
 (() => {
 
@@ -104,7 +106,7 @@ function popUp(id) {
     } else {
 
         filterPopup.setAttribute("active", "")
-        filterPopup.value = null
+        console.log(filterPopup)
         filterPopup.style.display = "none";
     }
 }
@@ -113,17 +115,17 @@ function popUp(id) {
 
 //DRAW TABLE FUNCTION
 
-function drawTable(dataArray, searchQuery) {
+function drawTable(dataArray) {
     resultData = dataArray || []
     var span = document.getElementById("noData")
     if (typeof dataArray === undefined || Object.keys(dataArray).length == 0) {
         let tbody = document.getElementsByTagName("tbody")
 
-        generateTableBody(dataArray, searchQuery);
+        generateTableBody(dataArray);
         span.style.display = "block";
     } else {
         span.style.display = "none";
-        generateTableBody(dataArray, searchQuery);
+        generateTableBody(dataArray);
     }
 
 }
@@ -131,7 +133,7 @@ function drawTable(dataArray, searchQuery) {
 
 
 
-//EventListener to handle popup close action  on focus out.
+//EventListener to handle popup close action on focus out.
 document.addEventListener('click', function (event) {
     const namePop = document.getElementById("NameFilter");
     const emailPop = document.getElementById("EmailFilter");
@@ -168,88 +170,87 @@ document.addEventListener('click', function (event) {
 
 
 
-// Function For Filtering Entire Column and Row 
+//Function For Filtering Entire Column and Row 
 
 function filterTable(FilterColumn) {
-    let selectedOption, qeuryString;
+    let selectedOption;
     var searchValue = document.getElementById("searchText");
-    column = FilterColumn.parentNode.id
-    let value = searchValue.value.toUpperCase();
-    let newDataArray;
-    if (column == "Global") {
-        newDataArray = dataArray.filter(function (data) {
+    columnFilter = FilterColumn.parentNode.id
+   
+    
+    if (columnFilter == "Global") {
+        column="Global"
+       let value = searchValue.value.toUpperCase();
+       searchQuery = searchValue.value.toUpperCase();
+        resultData = dataArray.filter(function (data) {
             for (key in data) {
                 if (data[key].toUpperCase().indexOf(value) != -1) {
                     return data
                 }
             }
         })
-        drawTable(newDataArray, value);
-    } else if (column == "NameFilter")
+       
+    } else if (columnFilter == "NameFilter")
 
     {
 
         selectedOption = document.getElementById("nameSortOption").value;
-        qeuryString = FilterColumn.value.toUpperCase();
-        FilterBasedOnColumn("Name", selectedOption, qeuryString);
+        searchQuery = FilterColumn.value.toUpperCase();
+        resultData = FilterBasedOnColumn("Name", selectedOption, searchQuery);
 
-    } else if (column == "EmailFilter") {
+    } else if (columnFilter == "EmailFilter") {
 
         selectedOption = document.getElementById("emailSortOption").value;
-        qeuryString = FilterColumn.value.toUpperCase();
-        FilterBasedOnColumn("Email", selectedOption, qeuryString)
+        searchQuery = FilterColumn.value.toUpperCase();
+        resultData = FilterBasedOnColumn("Email", selectedOption, searchQuery)
 
-    } else if (column == "RoleFilter") {
+    } else if (columnFilter == "RoleFilter") {
         selectedOption = document.getElementById("roleSortOption").value;
-        qeuryString = FilterColumn.value.toUpperCase();
-        FilterBasedOnColumn("Role", selectedOption, qeuryString)
-    } else if (column == "NumericFilter") {
+        searchQuery = FilterColumn.value.toUpperCase();
+        resultData =FilterBasedOnColumn("Role", selectedOption, searchQuery)
+    } else if (columnFilter == "NumericFilter") {
         let selectedOption = document.getElementById("numericTag");
-        var text = selectedOption.value;
-
+        searchQuery = " ";
         let inRangeField1 = document.getElementById("inRange1").value;
-        let num1 = parseInt(inRangeField1);
+        let num1 = parseFloat(inRangeField1);
         if (isNaN(num1)) {
             drawTable(dataArray, " ")
         } else {
             if (selectedOption.value == "range") {
                 let inRangeField2 = document.getElementById("inRange2").value
-                let num2 = parseInt(inRangeField2)
-                newDataArray = dataArray.filter(function (data) {
-                    if (parseInt(data["Experience"]) >= num1 && num2 >= parseInt(data["Experience"])) {
+                let num2 = parseFloat(inRangeField2)
+                resultData = dataArray.filter(function (data) {
+                    if (parseFloat(data["Experience"]) >= num1 && num2 >= parseFloat(data["Experience"])) {
                         return data;
                     }
                 })
             } else if (selectedOption.value == "lessThan") {
-                newDataArray = dataArray.filter(function (data) {
-                    if (parseInt(data["Experience"]) <= num1) {
+                resultData = dataArray.filter(function (data) {
+                    if (parseFloat(data["Experience"]) <= num1) {
                         return data;
                     }
                 })
 
 
             } else if (selectedOption.value == "greaterThan") {
-                newDataArray = dataArray.filter(function (data) {
-                    if (parseInt(data["Experience"]) >= num1) {
+                resultData = dataArray.filter(function (data) {
+                    if (parseFloat(data["Experience"]) >= num1) {
                         return data;
                     }
                 })
 
 
             } else {
-                newDataArray = dataArray.filter(function (data) {
-                    if (parseInt(data["Experience"]) == num1) {
+                resultData = dataArray.filter(function (data) {
+                    if (parseFloat(data["Experience"]) == num1) {
                         return data;
                     }
                 })
 
-
             }
-            resultData = newDataArray;
-            drawTable(newDataArray, " ");
         }
     }
-
+    sortFunction(activeSortColumn,activeSortOrder);
 
 
 
@@ -277,7 +278,7 @@ function showExtraFieldForRange(element) {
 //Filter based on column wise
 
 function FilterBasedOnColumn(columnName, searchType, searchQuery) {
-
+    column =columnName; //updating global column value
     let newDataArray;
     if (searchType == "contains") {
         newDataArray = dataArray.filter(function (data) {
@@ -294,14 +295,15 @@ function FilterBasedOnColumn(columnName, searchType, searchQuery) {
 
     }
 
-
-    drawTable(newDataArray, searchQuery)
+   return newDataArray 
+   
+    // drawTable(newDataArray, searchQuery)
 }
 
 
 //To generate tablebody 
 
-function generateTableBody(tableData, searchQuery) {
+function generateTableBody(tableData) {
     let tbody = document.getElementsByTagName("tbody");
 
     if (tbody.length == 0) {
@@ -317,13 +319,10 @@ function generateTableBody(tableData, searchQuery) {
         tableRow = "";
         tableRow += "<tr>";
         for (key in element) {
-            if (key != "Experience") {
+                
                 stringResult = highlightText(element[key], key, searchQuery);
                 tableRow += stringResult
-            } else {
-                tableRow += `<td>${element[key]}</td>`;
-            }
-
+          
         }
         tableRow += "</tr>";
 
@@ -342,16 +341,21 @@ function generateTableBody(tableData, searchQuery) {
 
 
 function onsortClick(iconTag, column) {
-
+    activeSortColumn =column;
+    console.log("active"+activeSortColumn+"clicked column "+column)
     if (iconTag.getAttribute("ascending") == "true") {
-        sortFunction(column, true);
+        
+        
+        activeSortOrder = false;
         iconTag.style.transform = "rotate(180deg)";
         iconTag.setAttribute("ascending", "false");
     } else {
-        sortFunction(column, false)
+        
+        activeSortOrder = true;
         iconTag.style.transform = "rotate(0deg)";
         iconTag.setAttribute("ascending", "true");
     }
+    sortFunction(activeSortColumn, activeSortOrder)
 
     let previousSelectedSortIcon = document.querySelector("[icon-selected=true");
     if (previousSelectedSortIcon) {
@@ -366,12 +370,12 @@ function sortFunction(column, ascending) {
     if (column == "Experience") {
         if (ascending == true) {
             resultData.sort(function (a, b) {
-                if (parseInt(a[column]) > parseInt(b[column])) return -1;
+                if (parseFloat(a[column]) < parseFloat(b[column])) return -1;
                 else return 1;
             })
         } else {
             resultData.sort(function (a, b) {
-                if (parseInt(a[column]) < parseInt(b[column])) return -1;
+                if (parseFloat(a[column]) > parseFloat(b[column])) return -1;
                 else return 1;
             })
         }
@@ -379,12 +383,12 @@ function sortFunction(column, ascending) {
     } else {
         if (ascending == true) {
             resultData.sort(function (a, b) {
-                if (a[column].toUpperCase() > b[column].toUpperCase()) return -1;
+                if (a[column].toUpperCase() < b[column].toUpperCase()) return -1;
                 else return 1;
             })
         } else {
             resultData.sort(function (a, b) {
-                if (a[column].toUpperCase() < b[column].toUpperCase()) return -1;
+                if (a[column].toUpperCase() > b[column].toUpperCase()) return -1;
                 else return 1
             })
         }
@@ -393,16 +397,12 @@ function sortFunction(column, ascending) {
     drawTable(resultData, " ");
 }
 
-
+//Highlight function for searched text
 
 function highlightText(element, key, searchQuery) {
     let resultString;
     let index = element.toUpperCase().indexOf(searchQuery)
-    let str = element
-    console.log(element)
-    console.log(column)
-
-
+    let str = element;
     if (column == "Global") {
 
         if (searchQuery.length >= 2 && element.toUpperCase().indexOf(searchQuery) != -1) {
@@ -415,24 +415,15 @@ function highlightText(element, key, searchQuery) {
         } else {
             resultString = `<td>${element}</td>`;
         }
-    } else if (column == "NameFilter") {
-        if (key == "Name") {
-            stringResult = str.substring(0, index) + "<mark>" + str.substring(index, index + searchQuery.length) + "</mark>" + str.substring(index + searchQuery.length, str.length)
-            console.log(stringResult)
-            resultString = `<td >${stringResult}</td>`
-        } else {
+    }
+    else if (column=="Experience"){  //for Experience filter no highlight feature
+       
             resultString = `<td>${element}</td>`;
-        }
-    } else if (column == "EmailFilter") {
-        if (key == "Email") {
-            stringResult = str.substring(0, index) + "<mark>" + str.substring(index, index + searchQuery.length) + "</mark>" + str.substring(index + searchQuery.length, str.length)
-            console.log(stringResult)
-            resultString = `<td >${stringResult}</td>`
-        } else {
-            resultString = `<td>${element}</td>`;
-        }
-    } else if (column == "RoleFilter") {
-        if (key == "Role") {
+        
+    }
+
+    else{
+          if (key == column) {
             stringResult = str.substring(0, index) + "<mark>" + str.substring(index, index + searchQuery.length) + "</mark>" + str.substring(index + searchQuery.length, str.length)
             console.log(stringResult)
             resultString = `<td >${stringResult}</td>`
